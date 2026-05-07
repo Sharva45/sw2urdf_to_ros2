@@ -122,6 +122,15 @@ class ConversionApp:
         # Create folders
         run_command_dir(self.target_dir, "mkdir launch meshes meshes/collision meshes/visual urdf")
 
+        # Create resource and python package folders
+        run_command_dir(self.target_dir, f"mkdir resource {package_name}")
+
+        # Create resource/package_name file
+        open(f"{self.target_dir}resource/{package_name}", "w").close()
+
+        # Create __init__.py inside package folder
+        open(f"{self.target_dir}{package_name}/__init__.py", "w").close()
+
         # Copy files
         # Copy stl files
         run_command_dir(self.source_dir, f"cp -r ./meshes/* {self.target_dir}meshes/visual")
